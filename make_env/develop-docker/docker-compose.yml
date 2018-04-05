@@ -1,0 +1,11 @@
+version: '3'
+services:
+  webapp:
+    build: ./webapp
+    environment:
+      - APP_ROOT=/home/rails/app
+    volumes:
+      - '../../:/home/rails/app'
+    ports:
+      - "3000:3000"
+    

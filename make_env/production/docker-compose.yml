@@ -1,0 +1,22 @@
+version: '3'
+services:
+  webapp:
+    build: ./webapp
+    env_file:
+      - ./environments/db.env
+    environment:
+      - APP_ROOT=/home/rails/app
+      - RAILS_ENV=production
+    volumes:
+      - '../../:/home/rails/app'
+    expose:
+      - "3000"
+  webfront:
+    build: ./webfront
+    environment:
+      - RAILS_ENV=production
+    depends_on:
+      - webapp
+    ports:
+      - "80:8080"
+    
